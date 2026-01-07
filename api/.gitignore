@@ -1,0 +1,16 @@
+#Compiled files
+__pycache__/
+
+#Virtual Enviroment
+venv/
+
+#Generated files
+data/users.db
+data/books.csv
+
+#IDE
+.vscode/
+.idea/
+
+#Enviroment variables
+.env
