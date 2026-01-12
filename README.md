@@ -126,7 +126,7 @@ sequenceDiagram
 
 1. Clone o Repositório
 2. Crie e ative o ambiente virtual
-3. instale as dependências
+3. instale as dependências - pip install -r requirements.txt
 4. Execute o scraper para popular dados ou chame o endpoint http://127.0.0.1:8000//api/v1/scraping/trigger 
 5. Inicie a API
 6. Acesse a documentação http://127.0.0.1:8000/docs

@@ -39,7 +39,7 @@ def get_features(data):
             'disponibilidade': ml_availability
             }
 
-
+# Rota de features para ML
 @router.get("/ml/features")
 def get_ml_features():
     ml_features = []

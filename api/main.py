@@ -7,6 +7,7 @@ from api.metrics import router as metrics_router
 from api.database import engine, Base
 from api.logging_config import logger
 
+# Criar tabelas no banco de dados
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -15,11 +16,17 @@ app = FastAPI(
     description="API Publica para Consulta de Livros"
 )
 
-app.include_router(books_router, prefix="/api/v1")
-app.include_router(auth_router, prefix="/api/v1")
-app.include_router(ml_router, prefix="/api/v1")
-app.include_router(metrics_router, prefix="/api/v1")
 
+# Incluindo as rotas com prefixo /api/v1
+app.include_router(books_router, prefix="/api/v1")# Rota de livros
+app.include_router(auth_router, prefix="/api/v1")# Rota de autenticação
+app.include_router(ml_router, prefix="/api/v1")# Rota de Machine Learning
+app.include_router(metrics_router, prefix="/api/v1")# Rota de Métricas
+
+# Middleware de logging: um middleware HTTP que mede o tempo 
+# de execução de cada requisição, chama call_next, e registra
+# via logger.info um dicionário extra com method, path, 
+# status_code e Execution time.
 @app.middleware("http")
 async def logging_middleware(request, call_next):
     request_time = time.time()
@@ -34,7 +41,7 @@ async def logging_middleware(request, call_next):
                          })
     return response
 
-
+# Rota raiz
 @app.get("/")
 async def home():
     return "Hello"
