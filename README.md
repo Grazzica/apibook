@@ -34,7 +34,7 @@ Projeto desenvolvido para o primeiro módulo da pós-graduação em Machine Lear
 
 ### Diagrama de Componentes
 
-:::mermaid
+```mermaid
 flowchart TB
     subgraph Cliente
         USER[Usuario]
@@ -85,11 +85,11 @@ flowchart TB
     
     SCRAPER --> BOOKS_SITE
     SCRAPER --> CSV
-:::
+```
 
 ### Diagrama de Sequência
 
-:::mermaid
+```mermaid
 sequenceDiagram
     participant U as Usuario
     participant API as FastAPI
@@ -113,7 +113,7 @@ sequenceDiagram
     API->>DB: Salva predictions
     DB-->>API: OK
     API-->>U: Confirmação
-:::
+```
 
 ## Instalação
 
