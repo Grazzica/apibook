@@ -44,7 +44,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
 
 router = APIRouter()
 
-
+# Rota de registro de usuário
 @router.post("/auth/register")
 def register(username: str, password: str, db: Session = Depends(get_db)):
     new_user = User(user_name = username, password_hash = get_password_hash(password))
@@ -53,7 +53,7 @@ def register(username: str, password: str, db: Session = Depends(get_db)):
     return {"username": username , "created": True}
 
 
-
+# Rota de login de usuário
 @router.post("/auth/login")
 def login(username: str, password: str, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.user_name == username).first()
@@ -67,7 +67,7 @@ def login(username: str, password: str, db: Session = Depends(get_db)):
     else:
         raise HTTPException(status_code = 401, detail="Invalid Credentials")
     
-
+# Rota de refresh token
 @router.post("/auth/refresh")
 def refresh_token(current_user: User = Depends(get_current_user)):
     return create_access_token({"sub": current_user.user_name})

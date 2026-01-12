@@ -28,6 +28,7 @@ def get_log(file):
     
     return json_logs
 
+# Rota de métricas da aplicação
 @router.get("/metrics")
 def send_metrics():
     logs = get_log('app.log')

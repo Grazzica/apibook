@@ -32,7 +32,7 @@ def get_categories():
 
 router = APIRouter()
 
-
+# Rota para listar livros
 @router.get("/books")
 def list_books():
     if books:
@@ -40,19 +40,19 @@ def list_books():
     raise HTTPException(status_code=404, detail="Books list not available")
 
 
-
+# Rota para listar categorias
 @router.get("/categories")
 def list_categories():
     return get_categories()
 
 
-
+# Rota de health check
 @router.get("/health")
 def health_check():
     return {"status": "healthy", "books_loaded": len(books)}
 
 
-
+# Rota de busca de livros
 @router.get("/books/search")
 def book_search(title:str = "", category:str = ""):
     
@@ -84,7 +84,7 @@ def book_search(title:str = "", category:str = ""):
     raise HTTPException(status_code = 404, detail="Book not found")
 
 
-
+# Rota de estatísticas gerais dos livros
 @router.get("/stats/overview")
 def books_overview():
     rating = {"One": 0, "Two": 0, "Three": 0, "Four": 0, "Five": 0}
@@ -108,7 +108,7 @@ def books_overview():
     }
 
 
-
+# Rota de estatísticas por categoria
 @router.get("/stats/categories")
 def category_stats():
     categories_list = get_categories()
@@ -130,7 +130,7 @@ def category_stats():
     return result
 
 
-
+# Rota de livros mais bem avaliados
 @router.get("/books/top-rated")
 def top_rated():
     result = []
@@ -141,7 +141,7 @@ def top_rated():
     return result
 
 
-
+#  Rota de livros por faixa de preço
 @router.get("/books/price-range")
 def get_books_per_price_range(min:float, max:float):
     if min > max:
@@ -155,14 +155,14 @@ def get_books_per_price_range(min:float, max:float):
     return result 
 
 
-
+# Rota para disparar o scrapper
 @router.post("/scraping/trigger")
 def trigger_scrapper(current_user: User = Depends(get_current_user)):
     main()
     return {"message": "Scrapper executed", "triggered_by": current_user.user_name}
 
 
-
+# Rota de busca de livro por ID
 @router.get("/books/{id}")
 def book_id(id:int):
     if -1 < id < len(books):
