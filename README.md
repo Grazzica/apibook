@@ -127,9 +127,9 @@ sequenceDiagram
 1. Clone o Repositório
 2. Crie e ative o ambiente virtual
 3. instale as dependências - pip install -r requirements.txt
-4. Execute o scraper para popular dados ou chame o endpoint http://127.0.0.1:8000//api/v1/scraping/trigger 
+4. Execute o scraper para popular dados ou chame o endpoint http://100.50.39.162:8000/api/v1/scraping/trigger 
 5. Inicie a API
-6. Acesse a documentação http://127.0.0.1:8000/docs
+6. Acesse a documentação http://100.50.39.162:8000/docs
 
 ## Endpoints
 
@@ -186,7 +186,7 @@ sequenceDiagram
 
 **Request**
 ```bash
-curl http://127.0.0.1:8000/api/v1/books/search?title=without&category=FiCtion
+curl http://100.50.39.162:8000/api/v1/books/search?title=without&category=FiCtion
 ```
 **Response**
 ```json
@@ -225,14 +225,14 @@ curl http://127.0.0.1:8000/api/v1/books/search?title=without&category=FiCtion
 
 ```bash
 # 1. Registrar usuário
-curl -X POST "http://127.0.0.1:8000/api/v1/auth/register?username=admin&password=123456"
+curl -X POST "http://100.50.39.162:8000/api/v1/auth/register?username=admin&password=123456"
 
 # 2. Fazer login
-curl -X POST "http://127.0.0.1:8000/api/v1/auth/login?username=admin&password=123456"
+curl -X POST "http://100.50.39.162:8000/api/v1/auth/login?username=admin&password=123456"
 # Retorna: {"access_token": "eyJ...", "token_type": "bearer"}
 
 # 3. Usar token para rota protegida
-curl -X POST http://127.0.0.1:8000/api/v1/scraping/trigger \
+curl -X POST http://100.50.39.162:8000/api/v1/scraping/trigger \
   -H "Authorization: Bearer eyJ..."
 ```
 
@@ -261,15 +261,25 @@ apibook/
 
 ## Deploy
 
-API disponível em: [URL do deploy]
+API disponível em: http://100.50.39.162:8000
 
 
-## Autor
+## Autores
+
+**Adriano Cabrera**
+
+- LinkedIn: https://www.linkedin.com/in/adriano-cabrera-b7b680a7/
+- GitHub: https://github.com/cabrpin
 
 **Caio Grazzini**
 
-- LinkedIn: [seu-linkedin]
-- GitHub: [seu-github]
+- LinkedIn: https://www.linkedin.com/in/caiograzzini/
+- GitHub: https://github.com/Grazzica/
+
+**Fabrício Batista Dias**
+
+- LinkedIn: https://www.linkedin.com/in/fabriciobdias/
+- GitHub: https://github.com/DiasFabricio
 
 ---
 
