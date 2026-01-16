@@ -262,6 +262,7 @@ apibook/
 ## Deploy
 
 API disponível em: http://100.50.39.162:8000
+Vídeo apresentação disponível em: https://youtu.be/Ou8ZQ9D_8F8
 
 
 ## Autores
